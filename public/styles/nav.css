@@ -10,18 +10,20 @@ nav {
   z-index: 1;
 }
 
-span {
+.logo {
   font-family: 'Bungee', sans-serif;
   font-size: 1.5em;
+  margin-top: 0.3em;
 }
 
-.new-tweet {
+.tweet-toggle-container {
   display: flex;
   flex-direction: column;
-  width: auto;
   align-items: center;
+  margin-top: 0.5em;
 }
 
-i {
+.tweet-toggle {
+  margin-top: 4px;
   color: red; 
 }

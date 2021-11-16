@@ -1,0 +1,37 @@
+.new-tweet {
+	width: 100%;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	width: 100%;
+	font-family: 'Bungee' ,sans-serif;
+	font-size: .85em;
+	overflow: auto;
+	
+}
+
+textarea {
+	outline: none;
+	border: none;
+	border-bottom: 3px solid #545149;
+	resize: none;
+	width: 100%;
+	margin-bottom: 1em;
+	width: 100%;
+	max-width: 100%;
+	background-color: #f4f1ec;
+	color: #3c3a34;
+}
+
+.tweet-submit-btn {
+	background-color: #4056A1;
+	color: #fff;
+	font-family: "Bungee", sans-serif;
+}
+
+.counter {
+	margin-left: 89%;
+}
