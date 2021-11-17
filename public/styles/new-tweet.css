@@ -35,3 +35,7 @@ textarea {
 .counter {
 	margin-left: 89%;
 }
+
+.over-limit {
+	color: red;
+}
