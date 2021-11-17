@@ -10,7 +10,6 @@ form {
 	font-family: 'Bungee' ,sans-serif;
 	font-size: .85em;
 	overflow: auto;
-	
 }
 
 textarea {
@@ -20,20 +19,22 @@ textarea {
 	resize: none;
 	width: 100%;
 	margin-bottom: 1em;
-	width: 100%;
-	max-width: 100%;
+	
 	background-color: #f4f1ec;
 	color: #3c3a34;
+}
+
+.new-tweet footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
 }
 
 .tweet-submit-btn {
 	background-color: #4056A1;
 	color: #fff;
 	font-family: "Bungee", sans-serif;
-}
-
-.counter {
-	margin-left: 89%;
 }
 
 .over-limit {
