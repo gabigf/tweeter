@@ -96,6 +96,7 @@ $(document).ready(() => {
 
 	$newTweetToggle.on('click', e => {
 		$newTweetContainer.toggle('hide');
+		$tweetText.focus();
 	});
 
 
