@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	let $counter = $('.counter');
 	const $tweetText = $('textarea');
-	const charMax = 140;
+	const charMax = $counter.val();
 
 	$tweetText.on('keyup', function() {
 		let textLength = $(this).val().length;
