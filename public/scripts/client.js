@@ -31,7 +31,7 @@ $(document).ready(() => {
 				createTweetElement(res[res.length]);
 			});
 
-		$newTweetForm.trigger('reset')
+		$newTweetForm.trigger('reset');
 	});
 
 	const loadTweets = () => {
