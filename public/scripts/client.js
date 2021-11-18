@@ -10,7 +10,9 @@ $(document).ready(() => {
 	const $newTweetForm = $('#new-tweet-form');
 	const $tweetContainer = $('#tweets');
 	const $tweetText = $('#tweet-text');
+	const $newTweetContainer = $('.new-tweet');
 	const $errorMsg = $('.new-tweet aside');
+	const $newTweetToggle = $('.tweet-toggle-container');
 	const url = '/tweets';
 	
 	$newTweetForm.on("submit", function(event) {
@@ -39,6 +41,7 @@ $(document).ready(() => {
 		$newTweetForm.trigger('reset');
 	});
 
+
 	const loadTweets = () => {
 		$.ajax({
 			url: url,
@@ -48,7 +51,6 @@ $(document).ready(() => {
 		.done(tweets => {
 			renderTweets(tweets)
 		})
-		
 	};
 
 
@@ -59,6 +61,7 @@ $(document).ready(() => {
 			$tweetContainer.prepend(tweetToAppend);
 		}
 	}
+
 
 	const createTweetElement = tweetObj => {
 		const escape = function (str) {
@@ -90,6 +93,11 @@ $(document).ready(() => {
 
 		return $newTweetHTML;
 	}
+
+	$newTweetToggle.on('click', e => {
+		$newTweetContainer.toggle('hide');
+	});
+
 
 	loadTweets();
 });

@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	let $counter = $('.counter');
+	const $counter = $('.counter');
 	const $tweetText = $('textarea');
 	const charMax = $counter.val();
 

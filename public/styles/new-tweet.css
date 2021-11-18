@@ -2,6 +2,9 @@
 	width: 100%;
 }
 
+.hide {
+	display: none;
+}
 
 .error-message {
 	margin-top: 2rem;
