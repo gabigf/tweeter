@@ -10,6 +10,7 @@ $(document).ready(() => {
 	const $newTweetForm = $('#new-tweet-form');
 	const $tweetContainer = $('#tweets');
 	const $tweetText = $('#tweet-text');
+	const $errorMsg = $('.new-tweet aside');
 	const url = '/tweets';
 	
 	$newTweetForm.on("submit", function(event) {
@@ -17,12 +18,16 @@ $(document).ready(() => {
 		const dataToSend = $(this).serialize();
 		
 		if ($tweetText.val().length === 0) {
-			alert(`You're gonna need to type something in there bud`);
+			$errorMsg
+			.text(`You're gonna need to type something in there bud`)
+			.slideDown('slow');
 			return;
 		}
 
 		if ($tweetText.val().length > 140) {
-			alert(`Too many words there, might want to take it down a notch`);
+			$errorMsg
+				.text(`Too many words there, might want to take it down a notch`)
+				.slideDown('slow');
 			return;
 		}
 		

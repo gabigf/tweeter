@@ -2,6 +2,19 @@
 	width: 100%;
 }
 
+
+.error-message {
+	margin-top: 2rem;
+	margin-bottom: 0;
+	background-color: rgba(249, 11, 11, 0.276);
+	color: rgb(223, 16, 16);
+	border: solid red 4px;
+	border-radius: 5px;
+	padding: 1rem;
+	font-weight: 600;
+	display: none;
+}
+
 form {
 	display: flex;
 	flex-direction: column;
@@ -10,7 +23,7 @@ form {
 	font-family: 'Source Sans Pro' ,sans-serif;
 	font-size: .85em;
 	overflow: auto;
-	margin-top: 4em;
+	margin-top: 2em;
 }
 
 label[for="tweet-text"] {
@@ -42,6 +55,10 @@ textarea {
 .tweet-submit-btn {
 	background-color: #4056A1;
 	color: #fff;
+	font-family: "Bungee", sans-serif;
+}
+
+.counter {
 	font-family: "Bungee", sans-serif;
 }
 
