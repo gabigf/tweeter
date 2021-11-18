@@ -8,11 +8,12 @@
 
 $(document).ready(() => {
 	const $newTweetForm = $('#new-tweet-form');
+	const $tweetContainer = $('#tweets');
+	const $tweetText = $('#tweet-text');
 	const url = '/tweets';
 	
 	$newTweetForm.on("submit", function(event) {
 		event.preventDefault();
-		const $tweetText = $('#tweet-text');
 		const dataToSend = $(this).serialize();
 		
 		if ($tweetText.val().length === 0) {
@@ -28,7 +29,6 @@ $(document).ready(() => {
 		$.post('/tweets', dataToSend)
 			.then(res => {
 				loadTweets();
-				createTweetElement(res[res.length]);
 			});
 
 		$newTweetForm.trigger('reset');
@@ -48,15 +48,21 @@ $(document).ready(() => {
 
 
 	const renderTweets = tweetsArr => {
+		$tweetContainer.empty();
 		for (const tweet of tweetsArr) {
 			const tweetToAppend = createTweetElement(tweet);
-			$('#tweets').prepend(tweetToAppend);
+			$tweetContainer.prepend(tweetToAppend);
 		}
 	}
 
 	const createTweetElement = tweetObj => {
+		const escape = function (str) {
+			let div = document.createElement("div");
+			div.appendChild(document.createTextNode(str));
+			return div.innerHTML;
+		};
 		const formattedTime = timeago.format(tweetObj.created_at);
-		const newTweetHTML = `
+		const $newTweetHTML = `
 		<article class="tweet-container">
 			<header>
 				<div class="user-identity-container">
@@ -65,7 +71,7 @@ $(document).ready(() => {
 				</div>
 				<p class="user-handle">${tweetObj.user.handle}</p>
 			</header>
-			<p class="user-tweet">${tweetObj.content.text}</p>
+			<p class="user-tweet">${escape(tweetObj.content.text)}</p>
 			<footer>
 				<div class="when-tweet">${formattedTime}</div>
 				<div class="tweet-icon-container">
@@ -75,8 +81,9 @@ $(document).ready(() => {
 				</div>
 			</footer>
 		</article>
-		`
-		return newTweetHTML;
+		`;
+
+		return $newTweetHTML;
 	}
 
 	loadTweets();
