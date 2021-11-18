@@ -21,9 +21,19 @@
   align-items: center;
 }
 
-/* .user-handle {
-	color: ;
-} */
+.user-identity-container {
+	display: flex;
+	align-items: center;
+}
+
+.user-avatar {
+	width: 2em;
+	margin-right: 5px;
+}
+
+.user-handle {
+	color: #9ea1b3ba;
+}
 
 .user-tweet {
 	border-bottom: #545149 solid 3px;

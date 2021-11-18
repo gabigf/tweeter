@@ -8,50 +8,49 @@
 
 $(document).ready(() => {
 	const $newTweetForm = $('#new-tweet-form');
+	const url = '/tweets';
 	
-
 	$newTweetForm.on("submit", function(event) {
 		event.preventDefault();
+		const $tweetText = $('#tweet-text');
 		const dataToSend = $(this).serialize();
 		
-		
-		$.ajax({
-			url: '/tweets',
-			method: 'POST',
-			data: dataToSend
-		})
-		
+		if ($tweetText.val().length === 0) {
+			alert(`You're gonna need to type something in there bud`);
+			return;
+		}
 
+		if ($tweetText.val().length > 140) {
+			alert(`Too many words there, might want to take it down a notch`);
+			return;
+		}
+		
+		$.post('/tweets', dataToSend)
+			.then(res => {
+				loadTweets();
+				createTweetElement(res[res.length]);
+			});
+
+		$newTweetForm.trigger('reset')
 	});
 
-	const data = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png",
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1461116232227
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd" },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1461113959088
-    }
-  ]
+	const loadTweets = () => {
+		$.ajax({
+			url: url,
+			method: 'GET',
+			dataType: 'json'
+		})
+		.done(tweets => {
+			renderTweets(tweets)
+		})
+		
+	};
+
 
 	const renderTweets = tweetsArr => {
 		for (const tweet of tweetsArr) {
 			const tweetToAppend = createTweetElement(tweet);
-			$('#tweets').append(tweetToAppend);
+			$('#tweets').prepend(tweetToAppend);
 		}
 	}
 
@@ -61,7 +60,7 @@ $(document).ready(() => {
 		<article class="tweet-container">
 			<header>
 				<div class="user-identity-container">
-					<i class="user-icon far fa-user"></i>
+					<img class="user-avatar" src="${tweetObj.user.avatars}" />
 					<span class="user-name">${tweetObj.user.name}</span>
 				</div>
 				<p class="user-handle">${tweetObj.user.handle}</p>
@@ -80,9 +79,5 @@ $(document).ready(() => {
 		return newTweetHTML;
 	}
 
-	
-	
-
-	renderTweets(data);
-
+	loadTweets();
 });
