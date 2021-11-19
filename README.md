@@ -2,7 +2,14 @@
 
 Tweeter is a simple, single-page Twitter clone.
 
-This repository is the starter code for the project: Students will fork and clone this repository, then build upon it to practice their HTML, CSS, JS, jQuery and AJAX front-end skills, and their Node, Express back-end skills.
+A user is able to write a new tweet and have it displayed along with the other existing tweets. In order to view the input to write a tweet, click on the "Write a new tweet" button on the top right of the screen. There will be an error that will pop up if you don't enter anything or you enter too many characters.
+This page is fully responsive.
+
+## Screenshots
+!["Desktop home page view"](https://github.com/gabigf/tweeter/blob/master/docs/desktop-view.png)
+!["Desktop view with an error"](https://github.com/gabigf/tweeter/blob/master/docs/desktop-error.png)
+!["Mobile home page view"](https://github.com/gabigf/tweeter/blob/master/docs/mobile-tablet-view.png)
+!["Mobile view with tweet input"](https://github.com/gabigf/tweeter/blob/master/docs/mobile-tweet-box.png)
 
 ## Getting Started
 
@@ -14,5 +21,7 @@ This repository is the starter code for the project: Students will fork and clon
 
 ## Dependencies
 
+- Body Parser
+- Chance
 - Express
 - Node 5.10.x or above
