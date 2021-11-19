@@ -12,14 +12,17 @@ $(document).ready(() => {
 	const $tweetText = $('#tweet-text');
 	const $newTweetContainer = $('.new-tweet');
 	const $errorMsg = $('.new-tweet aside');
-	
 	const $newTweetToggle = $('.tweet-toggle-container');
-	
 	const url = '/tweets';
 	
+	/* 
+		Submit form event to create a new tweet
+	*/
 	$newTweetForm.on("submit", function(event) {
 		event.preventDefault();
 		const dataToSend = $(this).serialize();
+
+		// Error Messages
 		if ($tweetText.val().length === 0 || $tweetText.val().length > 140) {
 			if ($tweetText.val().length === 0) {
 				$errorMsg
@@ -29,7 +32,6 @@ $(document).ready(() => {
 						<i class="close-error fas fa-times"></i>
 					</div>
 					`);
-				
 			}
 			if ($tweetText.val().length > 140) {
 				$errorMsg
@@ -41,22 +43,23 @@ $(document).ready(() => {
 					`);
 			}
 			$errorMsg
-				.removeClass('hide')
-				.slideDown('slow');
+			.slideDown('fast')
 			
 			const $errorClose = $('.close-error');
 			$errorClose.click(e => {
-				e.preventDefault()
-				$errorMsg.addClass('hide');
+				e.preventDefault();
+				$errorMsg.slideUp('fast');
 			});
 		}
 		
-
+		// Sends the tweet data to the 'server'
 		$.post('/tweets', dataToSend)
 			.then(res => {
 				loadTweets();
 				$errorMsg.slideUp('fast');
 			});
+
+		// Resets the form so that it's ready for anote=her tweet
 		$newTweetForm.trigger('reset');
 	});
 
@@ -114,8 +117,10 @@ $(document).ready(() => {
 		return $newTweetHTML;
 	}
 
+	// STRETCH: Made 'Write a tweet' a button to toggle the new tweet form. Also closes any error messages if there are any.
 	$newTweetToggle.on('click', e => {
-		$errorMsg.addClass('hide');
+		e.preventDefault();
+		$errorMsg.slideUp();
 		$newTweetContainer.toggle('hide');
 		$tweetText.focus();
 	});

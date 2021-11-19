@@ -9,12 +9,13 @@
 .error-message {
 	margin-top: 2rem;
 	margin-bottom: 0;
-	background-color: rgba(249, 11, 11, 0.276);
-	color: rgb(223, 16, 16);
-	border: solid red 4px;
+	background-color: #DF101045;
+	color: #DF1010;
+	border: solid #F00 4px;
 	border-radius: 5px;
 	padding: 0 1em;
 	font-weight: 600;
+	display: none;
 }
 
 .error-text-container {
@@ -28,7 +29,7 @@
 }
 
 .close-error:hover {
-	color: rgba(223, 16, 16, 0.646);
+	color: #DF1010AB;
 }
 
 form {
@@ -79,11 +80,11 @@ textarea {
 }
 
 .over-limit {
-	color: red;
+	color: #F00;
 }
 
 @media only screen and (min-width: 1024px) {
-	.container {
+	.content-container {
 		margin-top: 120px;
 	}	
 }
