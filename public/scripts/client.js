@@ -18,26 +18,22 @@ $(document).ready(() => {
 	$newTweetForm.on("submit", function(event) {
 		event.preventDefault();
 		const dataToSend = $(this).serialize();
-		
 		if ($tweetText.val().length === 0) {
 			$errorMsg
 			.text(`You're gonna need to type something in there bud`)
 			.slideDown('slow');
 			return;
 		}
-
 		if ($tweetText.val().length > 140) {
 			$errorMsg
 				.text(`Too many words there, might want to take it down a notch`)
 				.slideDown('slow');
 			return;
 		}
-		
 		$.post('/tweets', dataToSend)
 			.then(res => {
 				loadTweets();
 			});
-
 		$newTweetForm.trigger('reset');
 	});
 
@@ -90,7 +86,6 @@ $(document).ready(() => {
 			</footer>
 		</article>
 		`;
-
 		return $newTweetHTML;
 	}
 
