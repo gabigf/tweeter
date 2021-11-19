@@ -12,30 +12,55 @@ $(document).ready(() => {
 	const $tweetText = $('#tweet-text');
 	const $newTweetContainer = $('.new-tweet');
 	const $errorMsg = $('.new-tweet aside');
+	
 	const $newTweetToggle = $('.tweet-toggle-container');
+	
 	const url = '/tweets';
 	
 	$newTweetForm.on("submit", function(event) {
 		event.preventDefault();
 		const dataToSend = $(this).serialize();
-		if ($tweetText.val().length === 0) {
+		if ($tweetText.val().length === 0 || $tweetText.val().length > 140) {
+			if ($tweetText.val().length === 0) {
+				$errorMsg
+				.html(`
+					<div class="error-text-container">
+						<p>You're gonna need to type something in there bud</p>
+						<i class="close-error fas fa-times"></i>
+					</div>
+					`);
+				
+			}
+			if ($tweetText.val().length > 140) {
+				$errorMsg
+					.html(`
+					<div class="error-text-container">
+						<p>Too many words there, might want to take it down a notch</p>
+						<i class="closeError fas fa-times"></i>
+					</div>
+					`);
+			}
 			$errorMsg
-			.text(`You're gonna need to type something in there bud`)
-			.slideDown('slow');
-			return;
-		}
-		if ($tweetText.val().length > 140) {
-			$errorMsg
-				.text(`Too many words there, might want to take it down a notch`)
+				.removeClass('hide')
 				.slideDown('slow');
-			return;
+			
+			const $errorClose = $('.close-error');
+			$errorClose.click(e => {
+				e.preventDefault()
+				$errorMsg.addClass('hide');
+			});
 		}
+		
+
 		$.post('/tweets', dataToSend)
 			.then(res => {
 				loadTweets();
+				$errorMsg.slideUp('fast');
 			});
 		$newTweetForm.trigger('reset');
 	});
+
+	
 
 
 	const loadTweets = () => {
@@ -90,6 +115,7 @@ $(document).ready(() => {
 	}
 
 	$newTweetToggle.on('click', e => {
+		$errorMsg.addClass('hide');
 		$newTweetContainer.toggle('hide');
 		$tweetText.focus();
 	});

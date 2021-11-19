@@ -13,9 +13,22 @@
 	color: rgb(223, 16, 16);
 	border: solid red 4px;
 	border-radius: 5px;
-	padding: 1rem;
+	padding: 0 1em;
 	font-weight: 600;
-	display: none;
+}
+
+.error-text-container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.close-error {
+	cursor: pointer;
+}
+
+.close-error:hover {
+	color: rgba(223, 16, 16, 0.646);
 }
 
 form {
