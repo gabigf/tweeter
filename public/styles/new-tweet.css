@@ -73,6 +73,11 @@ textarea {
 	background-color: #4056A1;
 	color: #fff;
 	font-family: "Bungee", sans-serif;
+	cursor: pointer;
+}
+
+.tweet-submit-btn:hover {
+	background-color: #4e6ac6;
 }
 
 .counter {
