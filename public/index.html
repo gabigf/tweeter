@@ -41,35 +41,39 @@
       </div>
     </nav>
 
-    <header class="current-user-header">
-      <div>
-        <img src="/images/profile-hex.png"> 
+    <div class="main-container">
+
+      <div class="header-container">
+        <header class="current-user-header">
+          <div class="user-img">
+            <img src="/images/profile-hex.png"> 
+          </div>
+          <br>
+          <div>
+            <h2 class="name-of-user"><strong>Lindsay</strong> Bluth</h2>
+          </div>
+        </header>
       </div>
-      <br>
-      <div>
-        <h2>Lindsay Bluth</h2>
-      </div>
-    </header>
+    
   
+      <!-- Page-specific (main) content here -->
+      <main class="container">
+        <section class="new-tweet hide">
+          <aside class="error-message"></aside>
+          <form id="new-tweet-form">
+            <label for="tweet-text">What are you humming about?</label>
+            <textarea name="text" id="tweet-text"></textarea>
+            <footer>
+              <button type="submit" class="tweet-submit-btn">Tweet</button>
+              <output name="counter" class="counter" for="tweet-text">140</output>
+            </footer>
+          </form>
+        </section>
+        <section id="tweets"> 
+          <!-- Tweets will appear here -->
+        </section>
+      </main>
+    </div>
 
-    <!-- Page-specific (main) content here -->
-    <main class="container">
-      <section class="new-tweet hide">
-        <aside class="error-message"></aside>
-        <form id="new-tweet-form">
-          <label for="tweet-text">What are you humming about?</label>
-          <textarea name="text" id="tweet-text"></textarea>
-          <footer>
-            <button type="submit" class="tweet-submit-btn">Tweet</button>
-            <output name="counter" class="counter" for="tweet-text">140</output>
-          </footer>
-        </form>
-      </section>
-
-      <section id="tweets"> 
-        <!-- Tweets will appear here -->
-      </section>
-      
-    </main>
   </body>
 </html>

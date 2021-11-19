@@ -44,3 +44,11 @@ nav {
     transform: translatey(0);
   }
 }
+
+  /* Tablet: minimum width of 768px to maximum width of 1024px */
+@media only screen and (min-width: 320px) and (max-width: 1024px) {
+  nav {
+    background-color: orange;
+	  background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+  }
+}

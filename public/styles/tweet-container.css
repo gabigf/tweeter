@@ -49,8 +49,25 @@
 
 .report-icon, .retweet-icon, .like-icon {
 	margin: 0.3em;
+	color: #596eb3;
+	cursor: pointer;
 }
 
-.report-icon:hover, .retweet-icon:hover, .like-icon:hover {
+.report-icon:hover, .retweet-icon:hover {
 	color: #9d8f5a;
+}
+
+.like-icon:hover {
+	color: #dc2b2b;
+}
+
+
+  /* Tablet: minimum width of 768px to maximum width of 1024px */
+@media only screen and (min-width: 320px) and (max-width: 1024px) {
+	.tweet-container footer {
+		font-size: .85em;
+	}
+	.user-tweet, .user-identity-container {
+		font-size: 2.2rem;
+	}
 }
