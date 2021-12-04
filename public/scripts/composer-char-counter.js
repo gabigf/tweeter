@@ -3,6 +3,7 @@ $(document).ready(function() {
 	const $tweetText = $('textarea');
 	const charMax = $counter.val();
 
+
 	$tweetText.on('keyup', function() {
 		let textLength = $(this).val().length;
 		let totalCount = charMax - textLength;
@@ -10,6 +11,7 @@ $(document).ready(function() {
 			$counter.val(totalCount).addClass('over-limit');
 		} else {
 			$counter.val(totalCount).removeClass('over-limit');
-		}
+		};
 	});
+	
 });

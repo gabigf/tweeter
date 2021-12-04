@@ -32,25 +32,27 @@ $(document).ready(() => {
 						<i class="close-error fas fa-times"></i>
 					</div>
 					`);
-			}
+			};
+
 			if ($tweetText.val().length > 140) {
 				$errorMsg
 					.html(`
 					<div class="error-text-container">
 						<p>Too many words there, might want to take it down a notch</p>
-						<i class="closeError fas fa-times"></i>
+						<i class="close-error fas fa-times"></i>
 					</div>
 					`);
-			}
-			$errorMsg
-			.slideDown('fast')
+			};
+
+			$errorMsg.slideDown('fast');
 			
 			const $errorClose = $('.close-error');
 			$errorClose.click(e => {
 				e.preventDefault();
 				$errorMsg.slideUp('fast');
 			});
-		}
+			return;
+		};
 		
 		// Sends the tweet data to the 'server'
 		$.post('/tweets', dataToSend)
@@ -64,8 +66,6 @@ $(document).ready(() => {
 	});
 
 	
-
-
 	const loadTweets = () => {
 		$.ajax({
 			url: url,
@@ -73,8 +73,8 @@ $(document).ready(() => {
 			dataType: 'json'
 		})
 		.done(tweets => {
-			renderTweets(tweets)
-		})
+			renderTweets(tweets);
+		});
 	};
 
 
@@ -83,16 +83,18 @@ $(document).ready(() => {
 		for (const tweet of tweetsArr) {
 			const tweetToAppend = createTweetElement(tweet);
 			$tweetContainer.prepend(tweetToAppend);
-		}
-	}
+		};
+	};
+
+
+	const escape = function (str) {
+		let div = document.createElement("div");
+		div.appendChild(document.createTextNode(str));
+		return div.innerHTML;
+	};
 
 
 	const createTweetElement = tweetObj => {
-		const escape = function (str) {
-			let div = document.createElement("div");
-			div.appendChild(document.createTextNode(str));
-			return div.innerHTML;
-		};
 		const formattedTime = timeago.format(tweetObj.created_at);
 		const $newTweetHTML = `
 		<article class="tweet-container">
@@ -115,7 +117,8 @@ $(document).ready(() => {
 		</article>
 		`;
 		return $newTweetHTML;
-	}
+	};
+
 
 	// STRETCH: Made 'Write a tweet' a button to toggle the new tweet form. Also closes any error messages if there are any.
 	$newTweetToggle.on('click', e => {
